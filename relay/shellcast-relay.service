@@ -1,0 +1,15 @@
+[Unit]
+Description=ShellCast WebSocket Relay
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=brian
+WorkingDirectory=/home/brian/projects/shellcast-relay
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
